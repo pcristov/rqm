@@ -11,6 +11,8 @@ constructor(props) {
         author: "",
         url: ""
     }
+    
+    this.newQuote = this.newQuote.bind(this);
 }
 
 componentDidMount() {
@@ -27,7 +29,7 @@ getQuotesList() {
 				const index = this.randomIndex(this.state.ql.length);
 				this.setState({
 	        		q: this.state.ql[index].quote,
-	        		author: this.state.ql[index].author,
+	        		author: this.state.ql[index].author
 	        	})
 			}
 	    ));
@@ -37,15 +39,23 @@ randomIndex(arrayLength) {
 	return Math.floor(Math.random() * arrayLength)
 }
 
+newQuote() {
+	const index = this.randomIndex(this.state.ql.length);
+	this.setState({
+		q: this.state.ql[index].quote,
+		author: this.state.ql[index].author
+	})
+}
+
 render() {
 	return (
 	  <div id="quote-box">
 	  	<div id="text">{ this.state.q }</div>
 	  	<div id="author">{ this.state.author }</div>
-			<button id="new-quote">New quote</button>
+			<button id="new-quote" onClick={ this.newQuote }>New quote</button>
 			<a
 				id="tweet-quote"
-				href="https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text="
+				href={'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + this.state.q + " — " + encodeURIComponent(this.state.author)}
 				target="_blank"
 				rel="noopener noreferrer"
 			>
