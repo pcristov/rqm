@@ -7,18 +7,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-           [Learn React]
-        </a>
       </header>
+      <div id="quote-box">
+      	<div id="text"></div>
+      	<div id="author"></div>
+  		<button id="new-quote">New quote</button>
+  		<a
+  			id="tweet-quote"
+  			href="https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text="
+  			target="_blank"
+  		>
+  			Tweet
+  		</a>
+      </div>
     </div>
   );
 }
